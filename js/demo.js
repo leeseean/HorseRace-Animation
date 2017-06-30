@@ -76,7 +76,7 @@ function createTimeMap(horses,timeMaps){//随机每匹马的时间分配
 }
 function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,rangeNumImg){//赛马
 
-    horseRun(horses);
+    horseRun(horses);//跑的动作
 
     let speeds = {},leftValue = {};//盛放各皮马的速度，盛放个屁马的left值
 
@@ -91,15 +91,15 @@ function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,ran
         horses.forEach((horse,index)=>{//处理10段里面每段速度
 
             if(parseInt(horsesLefts[horse.id])<eachTotal){//第一段的速度
-                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][0])*16);//第一段
+                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][0])*60);//第一段
             }else if(parseInt(horsesLefts[horse.id])>=eachTotal&&parseInt(horsesLefts[horse.id])<eachTotal*2){//第二段的速度
-                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][1])*16);//第二段
+                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][1])*60);//第二段
             }else if(parseInt(horsesLefts[horse.id])>=eachTotal*2&&parseInt(horsesLefts[horse.id])<eachTotal*3){//第三段的速度
-                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][2])*16);//第三段
+                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][2])*60);//第三段
             }else if(parseInt(horsesLefts[horse.id])>=eachTotal*3&&parseInt(horsesLefts[horse.id])<eachTotal*4){//第4段的速度
-                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][3])*16);//第4段
+                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][3])*60);//第4段
             }else if(parseInt(horsesLefts[horse.id])>=eachTotal*4&&parseInt(horsesLefts[horse.id])<eachTotal*5){//第5段的速度
-                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][4])*16);//第5段
+                speeds[horse.id] = eachTotal/(openResult[horse.id]*(timeMap[horse.id][4])*60);//第5段
             }
 
             leftValue[horse.id] = leftValue[horse.id] || 0;
@@ -124,7 +124,7 @@ function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,ran
         if(innerHorseWrap_scrollLeft<total-viewWidth){//未到达终点线区域
             if(leftMax-innerHorseWrap_scrollLeft>viewWidth-300){//马要向前跑出屏幕时滚动滚动条使得马不会跑出
                 innerHorseWrap.scrollLeft += speedMax;
-            }else if(innerHorseWrap_scrollLeft>leftMax-500){
+            }else if(innerHorseWrap_scrollLeft>leftMax-600){
                 innerHorseWrap.scrollLeft += speedMin;
             }
         }else{//到达终点线区域后，不滚动
@@ -159,7 +159,7 @@ function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,ran
             },1000);
         }
 
-        timeout = setTimeout(move,1000/16);
+        timeout = setTimeout(move,1000/60);
     }
     move();
 }
