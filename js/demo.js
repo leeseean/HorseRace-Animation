@@ -31,7 +31,17 @@ let timeout = null;
 
 function horseInit(horses,horseOrders,horseNums,rangeNumImg){//初始位置
     innerHorseWrap.scrollLeft = 0;//回到最左边
-    bottomSpace.style.left = 0;//回到最左边
+    if(isIE()) {//如果是IE，bottomSpace采用fixed定位，因为ie环境下滚动时动态改变left值会抖动
+        bottomSpace.style.position = 'fixed';
+        window.addEventListener('scroll',(()=>{
+            bottomSpace.style.left = `${innerHorseWrap.getBoundingClientRect().left}px`;
+            bottomSpace.style.top = `${horseWrap.getBoundingClientRect().bottom}px`;
+        }));
+        bottomSpace.style.left = `${innerHorseWrap.getBoundingClientRect().left}px`;
+        bottomSpace.style.top = `${horseWrap.getBoundingClientRect().bottom}px`;
+    }else{
+        bottomSpace.style.left = 0;//回到最左边
+    }
     horsesLeftsValues = Array(10).fill(0);
     horses.forEach((horse,index)=>{
         horse.style.backgroundImage = `url(./images/horse_${index+1}.png)`;
@@ -126,7 +136,9 @@ function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,ran
         }else{//到达终点线区域后，不滚动
             innerHorseWrap.scrollLeft += 0;
         }
-        bottomSpace.style.left = `${innerHorseWrap.scrollLeft}px`;//底部实时排序div跟随移动，以防看不到
+        if(!isIE()){//ie这样会抖动，不使用这个方案
+            bottomSpace.style.left = `${innerHorseWrap.scrollLeft}px`;//底部实时排序div跟随移动，以防看不到
+        }
         resultDialog.style.left = `${innerHorseWrap.scrollLeft + viewWidth/2}px`;//结果弹屏也跟着走吧，免得到了终点看不到
 
         if(leftMax>total){ //totalDistance
@@ -225,6 +237,10 @@ function queue(arr, size) {//求数组排列的所有排列方式[1,2,3]->[1,2],
 }
 function reverse_array(arr) {
     return arr.map((v,i)=>arr[arr.length-1-i]);//反转排序
+}
+function isIE() { //ie?
+    if (!!window.ActiveXObject || "ActiveXObject" in window)   return true;
+    else   return false;
 }
 /*function createSpeed(){//随机生成跑步速度
  return Array(8).fill(1).map(()=>(randomBetween(0.7,1)*5));

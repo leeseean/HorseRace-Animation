@@ -1,6 +1,14 @@
 'use strict';
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function _toConsumableArray(arr) {
+    if (Array.isArray(arr)) {
+        for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+            arr2[i] = arr[i];
+        }return arr2;
+    } else {
+        return Array.from(arr);
+    }
+}
 
 var horses = [].concat(_toConsumableArray(document.querySelectorAll('.horse')));
 var innerHorseWrap = document.querySelector('.innerHorseWrap');
@@ -303,3 +311,4 @@ closeResultDialog.onclick = function () {
     resultDialog.style.display = 'none';
     horseInit(horses, horseOrders, horseNumElems, rangeNumImg); //回到初始位置
 };
+//# sourceMappingURL=demo.js.map
