@@ -4,7 +4,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var horses = [].concat(_toConsumableArray(document.querySelectorAll('.horse')));
 var innerHorseWrap = document.querySelector('.innerHorseWrap');
-var viewWidth = innerHorseWrap.offsetWidth; //动画可视区宽度
+var viewWidth = parseInt(window.getComputedStyle(innerHorseWrap).width); //动画可视区宽度
 var horseWrap = document.querySelector('.horseWrap');
 var horseSky = document.querySelector('.horseSky');
 var horseOrders = document.querySelector('.horseOrders');
@@ -24,7 +24,7 @@ var horseOrdersLeftValue = void 0;
 var horseNumElems = [].concat(_toConsumableArray(document.querySelectorAll('.rangeNums>div.horseNum'))); //排序马匹
 var totalDistance = 15000; //总共要跑的距离 草地宽度800-马身150-终点线距离右边75
 var duration = [37.0, 38, 39].concat(_toConsumableArray(Array(7).fill(1).map(function () {
-    return 39 * randomBetween(1.01, 1.2);
+    return 39 * randomBetween(1.01, 1.05);
 }).sort())); //预先设定每匹马要跑的时间
 var openData = [8, 4, 5, 6, 1, 3, 2, 7, 9, 10]; //从后台传回的开奖结果
 var horsesLeftsValues = null;
@@ -95,7 +95,7 @@ function horseMove(horses) {
     var rangeNumImg = arguments[5];
     //赛马
 
-    horseRun(horses);
+    horseRun(horses); //跑的动作
 
     var speeds = {},
         leftValue = {}; //盛放各皮马的速度，盛放个屁马的left值
@@ -113,19 +113,19 @@ function horseMove(horses) {
 
             if (parseInt(horsesLefts[horse.id]) < eachTotal) {
                 //第一段的速度
-                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][0] * 16); //第一段
+                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][0] * 60); //第一段
             } else if (parseInt(horsesLefts[horse.id]) >= eachTotal && parseInt(horsesLefts[horse.id]) < eachTotal * 2) {
                 //第二段的速度
-                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][1] * 16); //第二段
+                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][1] * 60); //第二段
             } else if (parseInt(horsesLefts[horse.id]) >= eachTotal * 2 && parseInt(horsesLefts[horse.id]) < eachTotal * 3) {
                 //第三段的速度
-                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][2] * 16); //第三段
+                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][2] * 60); //第三段
             } else if (parseInt(horsesLefts[horse.id]) >= eachTotal * 3 && parseInt(horsesLefts[horse.id]) < eachTotal * 4) {
                 //第4段的速度
-                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][3] * 16); //第4段
+                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][3] * 60); //第4段
             } else if (parseInt(horsesLefts[horse.id]) >= eachTotal * 4 && parseInt(horsesLefts[horse.id]) < eachTotal * 5) {
                 //第5段的速度
-                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][4] * 16); //第5段
+                speeds[horse.id] = eachTotal / (openResult[horse.id] * timeMap[horse.id][4] * 60); //第5段
             }
 
             leftValue[horse.id] = leftValue[horse.id] || 0;
@@ -148,20 +148,15 @@ function horseMove(horses) {
         var sort_horsesLeftKeys = sort_horsesLeftsValues.map(function (value) {
             return getKeyFromValue(horsesLefts, value);
         }); //horseid排序
-        if (!JSON.parse(localStorage.getItem('sort_horsesLeftKeys')) || JSON.parse(localStorage.getItem('sort_horsesLeftKeys')).toString() != sort_horsesLeftKeys.toString()) {
+        if (!store.get('sort_horsesLeftKeys') || store.get('sort_horsesLeftKeys').toString() != sort_horsesLeftKeys.toString()) {
             sortHorseRange(horseNumElems, horsesLefts, sort_horsesLeftsValues, total, reverse_array(openData), rangeNumImg); //底部实时排名,排名发生改变时重新排名。
         }
-        localStorage.setItem('sort_horsesLeftKeys', JSON.stringify(sort_horsesLeftKeys)); //把旧的排名存起来，和之后的排名做比较
+        store.set('sort_horsesLeftKeys', sort_horsesLeftKeys); //把旧的排名存起来，和之后的排名做比较
 
         var innerHorseWrap_scrollLeft = innerHorseWrap.scrollLeft;
         if (innerHorseWrap_scrollLeft < total - viewWidth) {
             //未到达终点线区域
-            if (leftMax - innerHorseWrap_scrollLeft > viewWidth - 300) {
-                //马要向前跑出屏幕时滚动滚动条使得马不会跑出
-                innerHorseWrap.scrollLeft += speedMax;
-            } else if (innerHorseWrap_scrollLeft > leftMax - 500) {
-                innerHorseWrap.scrollLeft += speedMin;
-            }
+            innerHorseWrap.scrollLeft = leftMax - (viewWidth - 200); //保持第一名永远离右边屏幕200
         } else {
             //到达终点线区域后，不滚动
             innerHorseWrap.scrollLeft += 0;
@@ -196,7 +191,7 @@ function horseMove(horses) {
             }, 1000);
         }
 
-        timeout = setTimeout(move, 1000 / 16);
+        timeout = setTimeout(move, 1000 / 60);
     }
     move();
 }
@@ -262,17 +257,18 @@ function queue(arr, size) {
     }
     var allResult = [];
 
-    (function (arr, size, result) {
+    function _queue(arr, size, result) {
         if (result.length == size) {
             allResult.push(result);
         } else {
             for (var i = 0, len = arr.length; i < len; i++) {
                 var newArr = [].concat(arr),
                     curItem = newArr.splice(i, 1);
-                arguments.callee(newArr, size, [].concat(result, curItem));
+                _queue(newArr, size, [].concat(result, curItem));
             }
         }
-    })(arr, size, []);
+    };
+    _queue(arr, size, []);
 
     return allResult;
 }

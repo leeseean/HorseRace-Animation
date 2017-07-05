@@ -1,6 +1,6 @@
 let horses = [...document.querySelectorAll('.horse')];
 let innerHorseWrap = document.querySelector('.innerHorseWrap');
-let viewWidth = innerHorseWrap.offsetWidth;//动画可视区宽度
+let viewWidth = parseInt(window.getComputedStyle(innerHorseWrap).width);//动画可视区宽度
 let horseWrap = document.querySelector('.horseWrap');
 let horseSky = document.querySelector('.horseSky');
 let horseOrders = document.querySelector('.horseOrders');
@@ -115,10 +115,10 @@ function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,ran
         horsesLeftsValues = Object.values(horsesLefts);//马的距离数组
         let sort_horsesLeftsValues = horsesLeftsValues.sort((a,b)=>parseInt(a)-parseInt(b));//按跑动距离从小道大排序后的数组
         let sort_horsesLeftKeys = sort_horsesLeftsValues.map((value)=>getKeyFromValue(horsesLefts,value));//horseid排序
-        if(!JSON.parse(localStorage.getItem('sort_horsesLeftKeys'))||JSON.parse(localStorage.getItem('sort_horsesLeftKeys')).toString()!=sort_horsesLeftKeys.toString()){
+        if(!store.get('sort_horsesLeftKeys')||store.get('sort_horsesLeftKeys').toString()!=sort_horsesLeftKeys.toString()){
             sortHorseRange(horseNumElems,horsesLefts,sort_horsesLeftsValues,total,reverse_array(openData),rangeNumImg);//底部实时排名,排名发生改变时重新排名。
         }
-        localStorage.setItem('sort_horsesLeftKeys',JSON.stringify(sort_horsesLeftKeys));//把旧的排名存起来，和之后的排名做比较
+        store.set('sort_horsesLeftKeys',sort_horsesLeftKeys);//把旧的排名存起来，和之后的排名做比较
 
         let innerHorseWrap_scrollLeft = innerHorseWrap.scrollLeft;
         if(innerHorseWrap_scrollLeft<total-viewWidth){//未到达终点线区域
@@ -208,17 +208,18 @@ function queue(arr, size) {//求数组排列的所有排列方式[1,2,3]->[1,2],
     }
     var allResult = [];
 
-    (function (arr, size, result) {
+    function _queue(arr, size, result) {
         if (result.length == size) {
             allResult.push(result);
         } else {
             for (var i = 0, len = arr.length; i < len; i++) {
                 var newArr = [].concat(arr),
                     curItem = newArr.splice(i, 1);
-                arguments.callee(newArr, size, [].concat(result, curItem));
+                _queue(newArr, size, [].concat(result, curItem));
             }
         }
-    })(arr, size, []);
+    };
+    _queue(arr, size, []);
 
     return allResult;
 }
