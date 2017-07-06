@@ -19,7 +19,7 @@ let horseLineLeftValue;
 let horseOrdersLeftValue;
 let horseNumElems = [...document.querySelectorAll('.rangeNums>div.horseNum')];//排序马匹
 let totalDistance = 15000;//总共要跑的距离 草地宽度800-马身150-终点线距离右边75
-let duration = [37.0,38,39,...Array(7).fill(1).map(()=>39*(randomBetween(1.01,1.2))).sort()];//预先设定每匹马要跑的时间
+let duration = [37.0,38,39,...Array(7).fill(1).map(()=>39*(randomBetween(1.01,1.05))).sort()];//预先设定每匹马要跑的时间
 let openData = [8,4,5,6,1,3,2,7,9,10];//从后台传回的开奖结果
 let horsesLeftsValues = null;
 let rangeNumImg = Array(10).fill(1).map((item,index)=>`${-6-index*62.35}px -9px`);//底部排序
@@ -122,11 +122,7 @@ function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,ran
 
         let innerHorseWrap_scrollLeft = innerHorseWrap.scrollLeft;
         if(innerHorseWrap_scrollLeft<total-viewWidth){//未到达终点线区域
-            if(leftMax-innerHorseWrap_scrollLeft>viewWidth-300){//马要向前跑出屏幕时滚动滚动条使得马不会跑出
-                innerHorseWrap.scrollLeft += speedMax;
-            }else if(innerHorseWrap_scrollLeft>leftMax-600){
-                innerHorseWrap.scrollLeft += speedMin;
-            }
+            innerHorseWrap.scrollLeft = leftMax-(viewWidth-200);
         }else{//到达终点线区域后，不滚动
             innerHorseWrap.scrollLeft += 0;
         }
@@ -158,8 +154,8 @@ function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,ran
                 window.clearTimeout(timeout);//1秒后关闭动画
             },1000);
         }
-
-        timeout = setTimeout(move,1000/60);
+        requestAnimationFrame(move);
+        //timeout = setTimeout(move,1000/60);
     }
     move();
 }
