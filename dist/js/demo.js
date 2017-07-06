@@ -303,3 +303,4 @@ closeResultDialog.onclick = function () {
     resultDialog.style.display = 'none';
     horseInit(horses, horseOrders, horseNumElems, rangeNumImg); //回到初始位置
 };
+//# sourceMappingURL=demo.js.map

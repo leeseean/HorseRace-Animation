@@ -1,118 +1,119 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>急速赛马</title>
     <link rel="stylesheet" href="./css/demo.css">
 </head>
+
 <body>
 
-<div class="outerHorseWrap">
-    <div class="innerHorseWrap">
-        <div class="resultDialog">
-            <div class="issueAndDate">
-                <span class="andDate">赛马日期及场次</span><br>
-                <span class="issueAnd">20170613-18</span>
-            </div>
-            <div class="resultMiddleContent">
-                <div class="left yajunHorse">
-                    <div class="horse2"></div>
-                    <div>
-                        <img src="./images/yajun.png" class="yajunText">
-                        <span class="inline-block yajunNum"></span>
+    <div class="outerHorseWrap">
+        <div class="innerHorseWrap">
+            <div class="resultDialog">
+                <div class="issueAndDate">
+                    <span class="andDate">赛马日期及场次</span><br>
+                    <span class="issueAnd">20170613-18</span>
+                </div>
+                <div class="resultMiddleContent">
+                    <div class="left yajunHorse">
+                        <div class="horse2"></div>
+                        <div>
+                            <img src="./images/yajun.png" class="yajunText">
+                            <span class="inline-block yajunNum"></span>
+                        </div>
+                    </div>
+                    <div class="left guanjunHorse">
+                        <div class="horse1"></div>
+                        <div>
+                            <img src="./images/guanjun.png" class="guanjunText">
+                            <span class="inline-block guanjunNum"></span>
+                        </div>
+                    </div>
+                    <div class="right jijunHorse">
+                        <div class="horse3"></div>
+                        <div>
+                            <img src="./images/jijun.png" class="jijunText">
+                            <span class="inline-block jijunNum"></span>
+                        </div>
                     </div>
                 </div>
-                <div class="left guanjunHorse">
-                    <div class="horse1"></div>
-                    <div>
-                        <img src="./images/guanjun.png" class="guanjunText">
-                        <span class="inline-block guanjunNum"></span>
+                <div class="resultOrders">
+                    <div class="resultOrder resultOrder_4"><i class="resultNum">第 4 名</i></div>
+                    <div class="resultOrder resultOrder_5"><i class="resultNum">第 5 名</i></div>
+                    <div class="resultOrder resultOrder_6"><i class="resultNum">第 6 名</i></div>
+                    <div class="resultOrder resultOrder_7"><i class="resultNum">第 7 名</i></div>
+                    <div class="resultOrder resultOrder_8"><i class="resultNum">第 8 名</i></div>
+                    <div class="resultOrder resultOrder_9"><i class="resultNum">第 9 名</i></div>
+                    <div class="resultOrder resultOrder_10"><i class="resultNum" style="width: 46px;">第 10 名</i></div>
+                </div>
+                <i class="closeResultDialog" title="点击关闭">X</i>
+            </div>
+            <div class="horseSky"></div>
+            <div class="horseWrap">
+                <div class="horseLineLeft"></div>
+                <div class="horseOrders">
+                    <div class="horseOrder horseOrder_10">10</div>
+                    <div class="horseOrder horseOrder_9">9</div>
+                    <div class="horseOrder horseOrder_8">8</div>
+                    <div class="horseOrder horseOrder_7">7</div>
+                    <div class="horseOrder horseOrder_6">6</div>
+                    <div class="horseOrder horseOrder_5">5</div>
+                    <div class="horseOrder horseOrder_4">4</div>
+                    <div class="horseOrder horseOrder_3">3</div>
+                    <div class="horseOrder horseOrder_2">2</div>
+                    <div class="horseOrder horseOrder_1">1</div>
+                </div>
+            </div>
+
+            <div class="horse" id="horse_1"></div>
+            <div class="horse" id="horse_2"></div>
+            <div class="horse" id="horse_3"></div>
+            <div class="horse" id="horse_4"></div>
+            <div class="horse" id="horse_5"></div>
+            <div class="horse" id="horse_6"></div>
+            <div class="horse" id="horse_7"></div>
+            <div class="horse" id="horse_8"></div>
+            <div class="horse" id="horse_9"></div>
+            <div class="horse" id="horse_10"></div>
+
+            <div class="horseQuan"></div>
+            <div class="horseLineRight"></div>
+
+            <div class="bottomSpace clearfix">
+                <div class="logoIssue left">
+                    <div class="horseLogo">
+                        <img src="./images/horse_logo.png" alt="">
+                    </div>
+                    <div class="horseIssue">
+                        <span class="horseIssueTitle">赛马日期及场次</span>
+                        <span class="horseIssueDetail">20170613-018</span>
                     </div>
                 </div>
-                <div class="right jijunHorse">
-                    <div class="horse3"></div>
-                    <div>
-                        <img src="./images/jijun.png" class="jijunText">
-                        <span class="inline-block jijunNum"></span>
-                    </div>
+                <div class="rangeNums right">
+                    <div class="inline-block rangeNum_10 horseNum"><i class="rangeNum">10</i></div>
+                    <div class="inline-block rangeNum_9 horseNum"><i class="rangeNum">9</i></div>
+                    <div class="inline-block rangeNum_8 horseNum"><i class="rangeNum">8</i></div>
+                    <div class="inline-block rangeNum_7 horseNum"><i class="rangeNum">7</i></div>
+                    <div class="inline-block rangeNum_6 horseNum"><i class="rangeNum">6</i></div>
+                    <div class="inline-block rangeNum_5 horseNum"><i class="rangeNum">5</i></div>
+                    <div class="inline-block rangeNum_4 horseNum"><i class="rangeNum">4</i></div>
+                    <div class="inline-block rangeNum_3 horseNum"><i class="rangeNum">3</i></div>
+                    <div class="inline-block rangeNum_2 horseNum"><i class="rangeNum">2</i></div>
+                    <div class="inline-block rangeNum_1 horseNum"><i class="rangeNum">1</i></div>
                 </div>
-            </div>
-            <div class="resultOrders">
-                <div class="resultOrder resultOrder_4"><i class="resultNum">第 4 名</i></div>
-                <div class="resultOrder resultOrder_5"><i class="resultNum">第 5 名</i></div>
-                <div class="resultOrder resultOrder_6"><i class="resultNum">第 6 名</i></div>
-                <div class="resultOrder resultOrder_7"><i class="resultNum">第 7 名</i></div>
-                <div class="resultOrder resultOrder_8"><i class="resultNum">第 8 名</i></div>
-                <div class="resultOrder resultOrder_9"><i class="resultNum">第 9 名</i></div>
-                <div class="resultOrder resultOrder_10"><i class="resultNum" style="width: 46px;">第 10 名</i></div>
-            </div>
-            <i class="closeResultDialog" title="点击关闭">X</i>
-        </div>
-        <div class="horseSky"></div>
-        <div class="horseWrap">
-            <div class="horseLineLeft"></div>
-            <div class="horseOrders">
-                <div class="horseOrder horseOrder_10">10</div>
-                <div class="horseOrder horseOrder_9">9</div>
-                <div class="horseOrder horseOrder_8">8</div>
-                <div class="horseOrder horseOrder_7">7</div>
-                <div class="horseOrder horseOrder_6">6</div>
-                <div class="horseOrder horseOrder_5">5</div>
-                <div class="horseOrder horseOrder_4">4</div>
-                <div class="horseOrder horseOrder_3">3</div>
-                <div class="horseOrder horseOrder_2">2</div>
-                <div class="horseOrder horseOrder_1">1</div>
-            </div>
-        </div>
-
-        <div class="horse" id="horse_1"></div>
-        <div class="horse" id="horse_2"></div>
-        <div class="horse" id="horse_3"></div>
-        <div class="horse" id="horse_4"></div>
-        <div class="horse" id="horse_5"></div>
-        <div class="horse" id="horse_6"></div>
-        <div class="horse" id="horse_7"></div>
-        <div class="horse" id="horse_8"></div>
-        <div class="horse" id="horse_9"></div>
-        <div class="horse" id="horse_10"></div>
-
-        <div class="horseQuan"></div>
-        <div class="horseLineRight"></div>
-
-        <div class="bottomSpace clearfix">
-            <div class="logoIssue left">
-                <div class="horseLogo">
-                    <img src="./images/horse_logo.png" alt="">
-                </div>
-                <div class="horseIssue">
-                    <span class="horseIssueTitle">赛马日期及场次</span>
-                    <span class="horseIssueDetail">20170613-018</span>
-                </div>
-            </div>
-            <div class="rangeNums right">
-                <div class="inline-block rangeNum_10 horseNum"><i class="rangeNum">10</i></div>
-                <div class="inline-block rangeNum_9 horseNum"><i class="rangeNum">9</i></div>
-                <div class="inline-block rangeNum_8 horseNum"><i class="rangeNum">8</i></div>
-                <div class="inline-block rangeNum_7 horseNum"><i class="rangeNum">7</i></div>
-                <div class="inline-block rangeNum_6 horseNum"><i class="rangeNum">6</i></div>
-                <div class="inline-block rangeNum_5 horseNum"><i class="rangeNum">5</i></div>
-                <div class="inline-block rangeNum_4 horseNum"><i class="rangeNum">4</i></div>
-                <div class="inline-block rangeNum_3 horseNum"><i class="rangeNum">3</i></div>
-                <div class="inline-block rangeNum_2 horseNum"><i class="rangeNum">2</i></div>
-                <div class="inline-block rangeNum_1 horseNum"><i class="rangeNum">1</i></div>
             </div>
         </div>
     </div>
-</div>
 
 </body>
 <script type="text/javascript" src="./js/vender/polyfill.min.js"></script>
 <script type="text/javascript" src="./js/vender/getComputedStyle.js"></script>
 <script type="text/javascript" src="./js/vender/requestAnimationFrame.js"></script>
-<script type="text/javascript" src="./js/demo.js"></script>
+<script type="text/javascript" src="./js/vender/store.legacy.min.js"></script>
+<script type="text/javascript" src="./dist/demo.js"></script>
+
 </html>
-
-
