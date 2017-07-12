@@ -1,5 +1,6 @@
 # HorseRace-Animation
 利用定位马left值和页面滚动实现赛马动画
+预览：[https://leeseean.github.io/HorseRace-Animation](https://leeseean.github.io/HorseRace-Animation)
 
 实现原理：
     跑的路程distance固定一个数字，按约定好的排名给出每匹马需要跑的时间，第一名的时间最短，最后一名时间最长。
