@@ -132,7 +132,7 @@ function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,ran
 
         let innerHorseWrap_scrollLeft = innerHorseWrap.scrollLeft;
         if(innerHorseWrap_scrollLeft<total-viewWidth){//未到达终点线区域
-            innerHorseWrap.scrollLeft = leftMax-(viewWidth-200);//保持第一名永远离右边屏幕200
+            innerHorseWrap.scrollLeft = leftMax-(viewWidth-200);
         }else{//到达终点线区域后，不滚动
             innerHorseWrap.scrollLeft += 0;
         }
@@ -166,7 +166,7 @@ function horseMove(horses,total = totalDistance,timeMaps,openResult,openData,ran
                 window.clearTimeout(timeout);//1秒后关闭动画
             },1000);
         }
-
+       // requestAnimationFrame(move);
         timeout = setTimeout(move,1000/60);
     }
     move();
