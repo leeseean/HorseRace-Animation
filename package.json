@@ -1,13 +1,36 @@
 {
   "name": "css3",
   "version": "1.0.0",
+  "scripts": {
+    "dev": "webpack-dev-server --mode=development",
+    "build": "webpack --mode=production"
+  },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
     "babel-cli": "^6.24.1",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.5.2",
     "babel-preset-es2015": "^6.24.1",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "css-loader": "^4.2.1",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "less": "^3.12.2",
+    "less-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^0.10.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "style-loader": "^1.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^4.1.0",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "jQuery": "^1.7.4"
   }
 }

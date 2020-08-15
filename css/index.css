@@ -1,7 +1,8 @@
-.left{
+.left {
     float: left;
 }
-.right{
+
+.right {
     float: right;
 }
 
@@ -12,131 +13,180 @@
     clear: both;
     visibility: hidden
 }
+
 @keyframes horse_run {
-    0% {background-position: 20px 0;}
-    7.14% {background-position: -125px 0;}
-    14.28% {background-position: -280px 0;}
-    21.42% {background-position: 0px -100px;}
-    28.56% {background-position: -155px -100px;}
-    35.7% {background-position: -310px -100px;}
-    42.84% {background-position: 0px -203.5px;}
-    49.98% {background-position: -155px -203.5px;}
-    57.12% {background-position: -310px -203.5px;}
-    64.26% {background-position: 0px -310px;}
-    71.4% {background-position: -150px -310px;}
-    78.54% {background-position: -295px -310px;}
-    85.68% {background-position: 15px -412px;}
-    92.82% {background-position: -135px -412px;}
-    100% {background-position: -285px -412px;}
+    0% {
+        background-position: 20px 0;
+    }
+    7.14% {
+        background-position: -125px 0;
+    }
+    14.28% {
+        background-position: -280px 0;
+    }
+    21.42% {
+        background-position: 0px -100px;
+    }
+    28.56% {
+        background-position: -155px -100px;
+    }
+    35.7% {
+        background-position: -310px -100px;
+    }
+    42.84% {
+        background-position: 0px -203.5px;
+    }
+    49.98% {
+        background-position: -155px -203.5px;
+    }
+    57.12% {
+        background-position: -310px -203.5px;
+    }
+    64.26% {
+        background-position: 0px -310px;
+    }
+    71.4% {
+        background-position: -150px -310px;
+    }
+    78.54% {
+        background-position: -295px -310px;
+    }
+    85.68% {
+        background-position: 15px -412px;
+    }
+    92.82% {
+        background-position: -135px -412px;
+    }
+    100% {
+        background-position: -285px -412px;
+    }
 }
-.outerHorseWrap{
+
+.outerHorseWrap {
     height: 498px;
     overflow: hidden;
 }
-.innerHorseWrap{
+
+.innerHorseWrap {
     height: 516px;
     width: 800px;
     position: relative;
     overflow-x: scroll;
     overflow-y: hidden;
 }
-.horseWrap{
+
+.horseWrap {
     background: url(../images/horseRoad.png) repeat-x;
-    height:306px;
+    height: 306px;
     width: 999999999px;
     position: relative;
     transition: left linear .1s;
     background-position: 0 0;
 }
-.horse{
+
+.horse {
     width: 150px;
     height: 99px;
     position: absolute;
     background-position: 25px 0;
     z-index: 1;
 }
-.horseSky{
-    width:999999999px;
-    height:98px;
+
+.horseSky {
+    width: 999999999px;
+    height: 98px;
     margin-bottom: -5px;
     background-image: url(../images/horseSky.png);
     background-repeat: repeat-x;
 }
-.horseLineLeft{
+
+.horseLineLeft {
     position: absolute;
-    width:11px;
-    height:306px;
-    left:40px;
+    width: 11px;
+    height: 306px;
+    left: 40px;
     background-image: url(../images/horseLine.png);
     background-repeat: repeat-y;
 }
-.horseOrders{
+
+.horseOrders {
     position: absolute;
-    left:65px;
-    height:306px;
+    left: 65px;
+    height: 306px;
     width: 35px;
     text-align: center;
 }
-.horseOrders .horseOrder{
-    width:100%;
+
+.horseOrders .horseOrder {
+    width: 100%;
     position: absolute;
     width: 100%;
     border: 1px solid #ebebeb;
     border-radius: 5px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.horseOrders .horseOrder.horseOrder_10{
+.horseOrders .horseOrder.horseOrder_10 {
     background-color: #8866f6;
     color: #000000;
 }
-.horseOrders .horseOrder.horseOrder_9{
+
+.horseOrders .horseOrder.horseOrder_9 {
     background-color: #4e92f9;
     color: #000000;
 }
-.horseOrders .horseOrder.horseOrder_8{
+
+.horseOrders .horseOrder.horseOrder_8 {
     background-color: #f87b00;
     color: #000000;
 }
-.horseOrders .horseOrder.horseOrder_7{
+
+.horseOrders .horseOrder.horseOrder_7 {
     background-color: #e800fd;
     color: #000000;
 }
-.horseOrders .horseOrder.horseOrder_6{
+
+.horseOrders .horseOrder.horseOrder_6 {
     background-color: #212020;
     color: #ffc000;
 }
-.horseOrders .horseOrder.horseOrder_5{
+
+.horseOrders .horseOrder.horseOrder_5 {
     background-color: #00d422;
     color: #ffffff;
 }
-.horseOrders .horseOrder.horseOrder_4{
+
+.horseOrders .horseOrder.horseOrder_4 {
     background-color: #fbd500;
     color: #1c1a18;
 }
-.horseOrders .horseOrder.horseOrder_3{
+
+.horseOrders .horseOrder.horseOrder_3 {
     background-color: #0006ef;
     color: #ffffff;
 }
-.horseOrders .horseOrder.horseOrder_2{
+
+.horseOrders .horseOrder.horseOrder_2 {
     background-color: #dcd9d9;
     color: #1c1a18;
 }
-.horseOrders .horseOrder.horseOrder_1{
+
+.horseOrders .horseOrder.horseOrder_1 {
     background-color: #ef0404;
     color: #ffffff;
 }
 
-.horseLineRight{
+.horseLineRight {
     position: absolute;
-    width:11px;
-    height:306px;
-    left:14915px;
+    width: 11px;
+    height: 306px;
+    left: 14915px;
     top: 95px;
     background-image: url(../images/horseLine.png);
     background-repeat: repeat-y;
 }
-.horseQuanWrap{
+
+.horseQuanWrap {
     overflow: hidden;
     width: 800px;
     height: 404px;
@@ -144,56 +194,66 @@
     position: absolute;
     top: 0;
 }
-.horseQuan{
-    width:160px;
-    height:98px;
+
+.horseQuan {
+    width: 160px;
+    height: 98px;
     position: absolute;
     left: 14840px;
-    top:0px;
+    top: 0px;
     background: url(../images/quanquan.png) no-repeat;
 }
-.hidden{
-    display: none!important;
+
+.hidden {
+    display: none !important;
 }
+
 .paused {
-    animation-play-state: paused!important;
+    animation-play-state: paused !important;
 }
+
 .running {
-    animation-play-state: running!important;
+    animation-play-state: running !important;
 }
-.inline-block{
+
+.inline-block {
     display: inline-block;
 }
-i{
+
+i {
     font-style: normal;
 }
-.bottomSpace{
+
+.bottomSpace {
     background-color: #0c264f;
-    width:800px;
-    height:102px;
-    line-height:102px;
+    width: 800px;
+    height: 102px;
+    line-height: 102px;
     margin-top: -2px;
     position: absolute;
     left: 0;
 }
 
-.bottomSpace .logoIssue{
-    width:20%;
+.bottomSpace .logoIssue {
+    width: 20%;
     position: relative;
 }
-.bottomSpace .rangeNums{
-    width:80%;
-    margin-top:15px;
-    line-height:125px;
+
+.bottomSpace .rangeNums {
+    width: 80%;
+    margin-top: 15px;
+    line-height: 125px;
 }
-.bottomSpace .horseLogo{
+
+.bottomSpace .horseLogo {
     width: 135px;
     height: 52px;
     position: absolute;
     top: -10px;
     z-index: 1;
 }
-.bottomSpace .logoIssue .horseIssue{
+
+.bottomSpace .logoIssue .horseIssue {
     border: 1px solid #878c1c;
     height: 50px;
     position: absolute;
@@ -204,27 +264,31 @@ i{
     border-bottom-right-radius: 8px;
     color: white;
 }
-.bottomSpace .logoIssue .horseIssue .horseIssueTitle{
+
+.bottomSpace .logoIssue .horseIssue .horseIssueTitle {
     position: absolute;
     top: -38px;
     width: 100%;
     font-size: 12px;
     margin-left: 20px;
 }
-.bottomSpace .logoIssue .horseIssue .horseIssueDetail{
+
+.bottomSpace .logoIssue .horseIssue .horseIssueDetail {
     position: absolute;
     top: -15px;
     width: 100%;
     margin-left: 18px;
 }
-.rangeNum_10,.rangeNum_9,.rangeNum_8,.rangeNum_7,.rangeNum_6,.rangeNum_5,.rangeNum_4,.rangeNum_3,.rangeNum_2,.rangeNum_1{
+
+.rangeNum_10, .rangeNum_9, .rangeNum_8, .rangeNum_7, .rangeNum_6, .rangeNum_5, .rangeNum_4, .rangeNum_3, .rangeNum_2, .rangeNum_1 {
     width: 45px;
     height: 45px;
     line-height: 45px;
     position: relative;
-    margin:0 5px;
+    margin: 0 5px;
 }
-.rangeNums .rangeNum{
+
+.rangeNums .rangeNum {
     position: absolute;
     top: -38px;
     left: 16px;
@@ -233,47 +297,58 @@ i{
     color: #f7f7f7;
 }
 
-.horseNum{
+.horseNum {
     background-image: url(../images/number_h.png);
     background-repeat: no-repeat;
 }
 
-.rangeNums .rangeNum_10 .rangeNum{
+.rangeNums .rangeNum_10 .rangeNum {
     left: 12px;
 }
-.rangeNum_10{
+
+.rangeNum_10 {
     color: #ffffff;
 }
-.rangeNum_9{
-    color:#1b1a18;
-}
-.rangeNum_8{
-    color: #ffffff;
-}
-.rangeNum_7{
-    color: #1c1a18;
-}
-.rangeNum_6{
-    color: #ffffff;;
-}
-.rangeNum_5{
-    color: #f7c143;;
-}
-.rangeNum_4{
+
+.rangeNum_9 {
     color: #1b1a18;
 }
-.rangeNum_3{
+
+.rangeNum_8 {
+    color: #ffffff;
+}
+
+.rangeNum_7 {
+    color: #1c1a18;
+}
+
+.rangeNum_6 {
+    color: #ffffff;;
+}
+
+.rangeNum_5 {
+    color: #f7c143;;
+}
+
+.rangeNum_4 {
+    color: #1b1a18;
+}
+
+.rangeNum_3 {
     color: #000000;
 }
-.rangeNum_2{
+
+.rangeNum_2 {
     color: #000000;
 }
-.rangeNum_1{
+
+.rangeNum_1 {
     color: #000000;
 }
-.innerHorseWrap .resultDialog{
+
+.innerHorseWrap .resultDialog {
     position: absolute;
-    padding:0 30px;
+    padding: 0 30px;
     width: 440px;
     height: 350px;
     z-index: 1000;
@@ -290,39 +365,46 @@ i{
     border-radius: 12px;
     display: none;
 }
-.issueAndDate{
+
+.issueAndDate {
     color: white;
-    margin-top:12px;
+    margin-top: 12px;
 }
-.issueAndDate .andDate{
-    font-size:12px;;
+
+.issueAndDate .andDate {
+    font-size: 12px;;
 }
-.resultMiddleContent{
+
+.resultMiddleContent {
     height: 145px;
-    margin-top:25px;
+    margin-top: 25px;
 }
-.resultMiddleContent .yajunHorse{
+
+.resultMiddleContent .yajunHorse {
     background: #051b34;
     width: 30%;
     text-align: center;
     transform: scale(0.8);
-        border-radius: 10%;
+    border-radius: 10%;
 }
-.resultMiddleContent .guanjunHorse{
+
+.resultMiddleContent .guanjunHorse {
     background: #051b34;
     width: 40%;
     text-align: center;
     transform: scale(0.9);
-        border-radius: 10%;
+    border-radius: 10%;
 }
-.resultMiddleContent .jijunHorse{
+
+.resultMiddleContent .jijunHorse {
     background: #051b34;
     width: 30%;
     text-align: center;
     transform: scale(0.8);
-        border-radius: 10%;
+    border-radius: 10%;
 }
-.guanjunHorse .horse1{
+
+.guanjunHorse .horse1 {
     animation: horse_run infinite 450ms forwards step-start;
     background-image: url(../images/horse_1.png);
     width: 150px;
@@ -331,7 +413,8 @@ i{
     background-position: 25px 0px;
     transform: scale(0.9);
 }
-.yajunHorse .horse2{
+
+.yajunHorse .horse2 {
     animation: horse_run infinite 450ms forwards step-start;
     background-image: url(../images/horse_2.png);
     width: 150px;
@@ -341,7 +424,8 @@ i{
     transform: scale(0.8);
     margin-left: -12%;
 }
-.jijunHorse .horse3{
+
+.jijunHorse .horse3 {
     animation: horse_run infinite 450ms forwards step-start;
     background-image: url(../images/horse_3.png);
     width: 150px;
@@ -351,21 +435,24 @@ i{
     transform: scale(0.8);
     margin-left: -12%;
 }
-.yajunHorse .yajunNum{
+
+.yajunHorse .yajunNum {
     background-image: url(../images/number_h.png);
     vertical-align: middle;
     width: 45px;
     height: 45px;
     background-position: -6px -9px;
 }
-.guanjunHorse .guanjunNum{
+
+.guanjunHorse .guanjunNum {
     background-image: url(../images/number_h.png);
     vertical-align: middle;
     width: 45px;
     height: 45px;
     background-position: -6px -9px;
 }
-.jijunHorse .jijunNum{
+
+.jijunHorse .jijunNum {
     background-image: url(../images/number_h.png);
     background-repeat: no-repeat;
     vertical-align: middle;
@@ -373,10 +460,12 @@ i{
     height: 45px;
     background-position: -6px -9px;
 }
-.yajunText,.guanjunText,.jijunText{
+
+.yajunText, .guanjunText, .jijunText {
     vertical-align: middle;
 }
-.resultOrders  .resultOrder {
+
+.resultOrders .resultOrder {
     display: inline-block;
     margin: 0 1.2%;
     background-repeat: no-repeat;
@@ -385,17 +474,20 @@ i{
     width: 45px;
     height: 45px;
 }
+
 .resultOrders {
     text-align: center;
     color: white;
     font-size: 12px;
     margin-top: 50px;
 }
+
 i.resultNum {
     position: relative;
     top: -20px;
     display: inline-block;
 }
+
 .resultDialog .closeResultDialog {
     position: absolute;
     width: 20px;
@@ -409,6 +501,7 @@ i.resultNum {
     color: white;
     cursor: pointer;
 }
-.resultDialog .closeResultDialog:hover{
+
+.resultDialog .closeResultDialog:hover {
     background: orange;
 }

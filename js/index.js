@@ -2,8 +2,10 @@ import {
     isIE,
     queue,
     reverse_array,
-    randomBetween
-} from "./utils";
+    randomBetween,
+} from './utils';
+import axios from './axios';
+import '../css/index.css';
 
 let horses = [...document.querySelectorAll('.horse')];
 let innerHorseWrap = document.querySelector('.innerHorseWrap');
@@ -183,13 +185,21 @@ function horseMove(horses, total = totalDistance, timeMaps, openResult, openData
     move();
 }
 
+const interval = setInterval(startGame, 1000);
 let lastOpenTime;
+
 function startGame() {
     if (lastOpenTime && (Date.now() - new Date(lastOpenTime) <= 90 * 1000)) {
         return;
     }
-    $.ajax({
-        url: `https://api.81p.net/api?p=json&t=vrsm&limit=3&token=9261FABA1C0B092F`
+    /*axios({
+        url: `/api/`,
+        params: {
+            t: 'vrsm',
+            p: 'json',
+            limit: 3,
+            token: '9261FABA1C0B092F'
+        }
     }).then((res) => {
         const openData = res.data[0].opencode.split(',').map(v => Number(v));
         const openTime = res.data[0].opentime.split(',');
@@ -202,10 +212,13 @@ function startGame() {
             horseInit(horses, horseOrders, horseNumElems, rangeNumImg);//初始位置
             horseMove(horses, totalDistance, timeMaps, openResult, openData, rangeNumImg);
         }
-    });
+    }).catch(e => {
+            clearInterval(interval)
+            console.log(e)
+        }
+    );*/
 }
 
-setInterval(startGame, 1000);
 
 function getHorsesLeft(horses) {//获取每匹马的left值,即跑的距离
     let horsesLefts = new Object();
