@@ -32,3 +32,5 @@ export function isIE() { //ie?
 export function randomBetween(a, b) {//获取两个数之间的随机数
     return Math.random() * (b - a) + a;
 }
+
+
