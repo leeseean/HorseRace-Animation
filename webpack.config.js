@@ -15,16 +15,16 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: './js/[name].[hash:8].js'
     },
-    /*devServer: {
+    devServer: {
         proxy: {
             '/api': { // 这个是你要替换的位置
-                target: 'http://api.81p.net/',//这个是被替换的目标地址
+                target: 'http://api.81p.net/api',//这个是被替换的目标地址
                 secure: false,//true表示接受对方是https的接口
                 changeOrigin: true,// 是否需要跨域
                 pathRewrite: {'^/api': ''}
             }
         },
-    },*/
+    },
     module: {
         rules: [
             {

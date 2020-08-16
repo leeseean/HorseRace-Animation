@@ -33,4 +33,17 @@ export function randomBetween(a, b) {//获取两个数之间的随机数
     return Math.random() * (b - a) + a;
 }
 
+export function query(t) {
+    return document.querySelector(t)
+}
 
+export function queryAll(t) {
+    return document.querySelectorAll(t)
+}
+
+export function getKeyFromValue(obj, value) {//通过对象的value值查找与其映射的key值,对象有相同value值的话只检索第一个
+    const objArr = Object.keys(obj).map((item, index) => {//{a:1}->[{_key:'a',_value:1}]
+        return {'_key': item, '_value': obj[item]};
+    });
+    return objArr.find((k, i) => k['_value'] == value)['_key'];
+}

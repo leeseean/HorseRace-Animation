@@ -30,7 +30,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "axios": "^0.19.2",
-    "jQuery": "^1.7.4"
+    "axios": "^0.19.2"
   }
 }
