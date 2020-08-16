@@ -36,7 +36,7 @@ class HorseAni {
         */
         this.timeMaps = queue([0.19, 0.215, 0.2, 0.225, 0.17], 5);
         //开奖结果弹幕关闭
-        this.closeResultDialog.onclick = function () {
+        this.closeResultDialog.onclick = () => {
             this.resultDialog.style.display = 'none';
             this.horseInit();//回到初始位置
         };
@@ -97,16 +97,18 @@ class HorseAni {
     horseMove(horses, total = this.totalDistance, timeMaps, openData, rangeNumImg) {//赛马
         const openResult = new Object();//声明一个对象来存储openData和duration的对应关系
         openData.forEach((item, index) => {//openData和duration对应
-            openResult[`horse_${item}`] = duration[index];
+            openResult[`horse_${item}`] = this.duration[index];
         });
 
         this.horseRun(horses);//跑的动作
 
         const speeds = {}, leftValue = {};//盛放各皮马的速度，盛放个屁马的left值
 
-        const timeMap = createTimeMap(horses, timeMaps);
+        const timeMap = this.createTimeMap(horses, timeMaps);
 
         const eachTotal = total / 5;//每段的长度
+
+        let timeout = null;
 
         const move = () => {
 
@@ -140,7 +142,7 @@ class HorseAni {
             const sort_horsesLeftsValues = horsesLeftsValues.sort((a, b) => parseInt(a) - parseInt(b));//按跑动距离从小道大排序后的数组
             const sort_horsesLeftKeys = sort_horsesLeftsValues.map((value) => getKeyFromValue(horsesLefts, value));//horseid排序
             if (!store.get('sort_horsesLeftKeys') || store.get('sort_horsesLeftKeys').toString() != sort_horsesLeftKeys.toString()) {
-                this.sortHorseRange(horseNumElems, horsesLefts, sort_horsesLeftsValues, total, reverse_array(openData), rangeNumImg);//底部实时排名,排名发生改变时重新排名。
+                this.sortHorseRange(this.horseNumElems, horsesLefts, sort_horsesLeftsValues, total, reverse_array(openData), rangeNumImg);//底部实时排名,排名发生改变时重新排名。
             }
             store.set('sort_horsesLeftKeys', sort_horsesLeftKeys);//把旧的排名存起来，和之后的排名做比较
 
@@ -221,20 +223,25 @@ class HorseAni {
         }).then((res) => {
             const openData = res.data.data[0].opencode.split(',').map(v => Number(v));
             const openTime = res.data.data[0].opentime.split(',');
-            console.log(this)
             this.horseIssueDetail.innerText = res.data.data[0].expect;
-            this.openResult = new Object();//声明一个对象来存储openData和duration的对应关系
-            openData.forEach((item, index) => {//openData和duration对应
-                this.openResult[`horse_${item}`] = this.duration[index];
-            });
             this.horseInit();//初始位置
-            if (Date.now() - new Date(openTime) > 90 * 1000) {
-                this.lastOpenTime = openTime;
-                if (this.lastOpenTime && (Date.now() - new Date(this.lastOpenTime) <= 90 * 1000)) {
-                    return;
-                }
-                // this.horseMove(this.horses, this.totalDistance, this.timeMaps, this.openData, this.rangeNumImg);
-            }
+            // 90秒开一次奖
+            const needTime = Date.now() - new Date(openTime);
+            setTimeout(() => {
+                getOpenCode({
+                    t: 'vrsm',
+                    p: 'json',
+                    limit: 3,
+                    token: '9261FABA1C0B092F'
+                }).then((res) => {
+                    const openData = res.data.data[0].opencode.split(',').map(v => Number(v));
+                    this.issueAnd.innerText = res.data.data[0].expect;
+                    this.horseMove(this.horses, this.totalDistance, this.timeMaps, openData, this.rangeNumImg);
+                }).catch(e => {
+                    console.log('catch', e)
+                })
+            }, 90 * 1000 - needTime);
+
         }).catch(e => {
                 console.log(e)
             }
