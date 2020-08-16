@@ -37,13 +37,13 @@ class HorseAni {
         this.timeMaps = queue([0.19, 0.215, 0.2, 0.225, 0.17], 5);
         //开奖结果弹幕关闭
         this.closeResultDialog.onclick = () => {
-            this.resultDialog.style.display = 'none';
-            this.horseInit();//回到初始位置
+            this.startGame();//回到初始位置
         };
         this.lastOpenTime = null;
     }
 
     horseInit() {//初始位置
+        this.resultDialog.style.display = 'none';// 隐藏弹窗跑步结果栏目
         this.innerHorseWrap.scrollLeft = 0;//回到最左边
         if (isIE()) {//如果是IE，bottomSpace采用fixed定位，因为ie环境下滚动时动态改变left值会抖动
             bottomSpace.style.position = 'fixed';
@@ -64,9 +64,6 @@ class HorseAni {
             horse.style.top = `${38 + index * 29}px`;
             horse.style.left = '-95px';//一开始的位置
             horse.style.animation = '';
-        });
-        this.horseNumElems.forEach((num, i) => {//底部数字
-            num.style.backgroundPosition = this.rangeNumImg[i];
         });
         this.horseOrders.style.left = '65px';
         this.horseOrderArr.forEach((order, i) => {
@@ -107,8 +104,6 @@ class HorseAni {
         const timeMap = this.createTimeMap(horses, timeMaps);
 
         const eachTotal = total / 5;//每段的长度
-
-        let timeout = null;
 
         const move = () => {
 
@@ -175,11 +170,13 @@ class HorseAni {
                     v.style.backgroundPosition = rangeNumImg[openData[i + 3] - 1];
                 });
                 this.resultDialog.style.display = 'block';
+                // 5秒后初始化
                 setTimeout(() => {
-                    window.clearTimeout(timeout);//1秒后关闭动画
-                }, 1000);
+                    this.startGame();
+                }, 5000);
+                return;
             }
-            timeout = setTimeout(move, 1000 / 60);
+            setTimeout(move, 1000 / 60);
         }
 
         move();
@@ -221,7 +218,9 @@ class HorseAni {
             limit: 3,
             token: '9261FABA1C0B092F'
         }).then((res) => {
+            console.log(res.data)
             const openData = res.data.data[0].opencode.split(',').map(v => Number(v));
+            this.sortHorseRangeLast(this.horseNumElems, openData, this.rangeNumImg);
             const openTime = res.data.data[0].opentime.split(',');
             this.horseIssueDetail.innerText = res.data.data[0].expect;
             this.horseInit();//初始位置
@@ -234,6 +233,7 @@ class HorseAni {
                     limit: 3,
                     token: '9261FABA1C0B092F'
                 }).then((res) => {
+                    console.log(res.data)
                     const openData = res.data.data[0].opencode.split(',').map(v => Number(v));
                     this.issueAnd.innerText = res.data.data[0].expect;
                     this.horseMove(this.horses, this.totalDistance, this.timeMaps, openData, this.rangeNumImg);

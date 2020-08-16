@@ -28,7 +28,7 @@ module.exports = {
     module: {
         rules: [
             {
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, 'js')],
                 loader: 'babel-loader',
                 options: {
                     plugins: ['syntax-dynamic-import'],
